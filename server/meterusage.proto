@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package meterusage;
+
+message TimestampRange {
+  string start_time = 1;
+  string end_time = 2;
+}
+
+message MeterReading {
+  string time = 1;
+  float meter_usage = 2;
+}
+
+service MeterUsage {
+  rpc GetMeterUsage(TimestampRange) returns (stream MeterReading);
+}
+
